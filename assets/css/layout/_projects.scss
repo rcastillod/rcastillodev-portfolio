@@ -1,0 +1,78 @@
+.projects {
+	position: relative;
+	padding: 2vh 13.25vw 2.5rem;
+}
+
+@media screen and (min-width: 53em) {
+	.projects {
+		padding-top: 5vh;
+	}
+	.projects .project__image {
+		grid-column: 2 / span 2;
+	}
+}
+
+.project {
+	grid-gap: 5vh;
+	grid-template-columns: 100%;
+	align-content: center;
+	justify-content: center;
+	display: grid;
+	grid-template-areas: 'caption' 'img';
+	margin: 0 auto 20vh;
+}
+
+@media screen and (min-width: 53em) {
+	.project {
+		grid-gap: 1vw;
+    grid-template-columns: 25vw 1fr;
+    grid-template-areas: 'caption img' ;
+	}
+}
+
+.project__image-wrap {
+	grid-area: img;
+	width: 100%;
+	aspect-ratio: 800/500;
+	justify-self: center;
+}
+
+.project__image {
+	width: 100%;
+	aspect-ratio: 800/500;
+	position: relative;
+	overflow: hidden;
+	will-change: transform;
+}
+
+.project__image-inner {
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	will-change: transform;
+}
+
+.project__caption {
+	grid-area: caption;
+	position: relative;
+	z-index: 10;
+}
+
+.project__caption-title {
+  @apply text-secondary;
+	white-space: nowrap;
+	width: min-content;
+	line-height: 1.2;
+	font-size: clamp(2rem,6vw,3.5rem);
+	font-weight: 300;
+	margin: 0;
+}
+
+.project__caption-description {
+	max-width: 200px;
+	line-height: 1.2;
+}
+
+.project__caption-number {
+	display: inline-block;
+}
