@@ -12,7 +12,10 @@ const generateProjectsTemplate = (data) => {
         <h2 class="project__caption-title oh"><span class="project__inner">${data.attributes.titulo}</span></h2>
         <p class="project__caption-description">${data.attributes.descripcion}</p>
       </figcaption>
-      <div class="project__image-wrap"><div class="project__image"><div class="project__image-inner" style="background-image:url(http://localhost:1337${data.attributes.imagen.data.attributes.url})"></div></div></div>
+      <div class="project__image-wrap">
+        <div class="project__image"><div class="project__image-inner" style="background-image:url(http://localhost:1337${data.attributes.imagen.data.attributes.url})"></div></div>
+        <div class="project__technologies">${getTechnologies(data.attributes.technologies)}</div>
+      </div>
     </figure>
   `
 }
@@ -21,6 +24,15 @@ const generateProjectsTemplate = (data) => {
 const renderProjectsData = (node, data) => {
   const projectsHtml = data.data.map(project => generateProjectsTemplate(project)).join('')
   node.innerHTML = projectsHtml
+}
+
+const getTechnologies = (tech) => {
+  const techNewArray = []
+  const technologiesHtml = tech.data
+  technologiesHtml.forEach(el => {
+    techNewArray.push(`<span>${el.attributes.Nombre}</span>`)
+  });
+  return techNewArray
 }
 
 // Fetch data from Strapi
