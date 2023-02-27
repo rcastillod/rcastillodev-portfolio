@@ -1,5 +1,6 @@
 import { preloadImages, isInViewport } from './extras';
 import { Menu } from './menu';
+import getProjects from './getProjects'
 import { Project } from './projects';
 import Lenis from '@studio-freight/lenis'
 import { gsap } from 'gsap';
@@ -28,9 +29,13 @@ new Menu(document.querySelector('.social__menu'));
 
 // Project instances (Project is the .content > figure.project)
 const projects = [];
-[...document.querySelectorAll('.project')].forEach(project => {
-  projects.push(new Project(project));
-});
+
+setTimeout(() => {
+  [...document.querySelectorAll('.project')].forEach(project => {
+    projects.push(new Project(project));
+  });
+  console.log(projects)
+}, 500)
 
 // DOM elements query
 const DOM = {
@@ -201,8 +206,9 @@ const animateOnScroll = () => {
       .addLabel('start', 0)
       // scale up the inner image
       .to(project.DOM.imageInner, {
+        backgroundPosition: "0px -100px",
         ease: 'none',
-        scaleY: 2.4,
+        scaleY: 1.2,
         scaleX: 1.2,
         opacity: 0
       }, 'start')
@@ -243,5 +249,7 @@ preloadImages('.project__image-inner').then(() => {
   document.body.classList.remove('loading');
 
   initSmoothScrolling();
-  animateOnScroll();
+  setTimeout(() => {
+    animateOnScroll();
+  }, 600)
 });
