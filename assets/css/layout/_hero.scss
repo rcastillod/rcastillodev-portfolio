@@ -179,8 +179,7 @@
 
 @media screen and (min-width: 53em) {
 	.menu__content {
-		grid-template-rows: 20% 10vh 10vh 10vh auto;
-		// grid-template-rows: 20% 10vh 10vh auto;
+		grid-template-rows: 20% 10vh 10vh auto auto;
 		grid-template-areas: '... ... ...'
 						'content-title-up content-about content-about'
 						'content-title-down content-about content-about'
@@ -206,16 +205,18 @@
 /* Menu social */
 .social__menu {
   grid-area: social-menu;
+  margin-top: 1rem;
+  opacity: 0;
 }
 .social__menu-item {
+  @apply border-t border-white/20;
 	cursor: default;
 	position: relative;
 	overflow: hidden;
-	box-shadow: 0 -1px white;
 }
 
 .social__menu-item:last-child {
-	box-shadow: 0 1px white, 0 -1px white;
+  @apply border-b border-white/20;
 }
 
 .social__menu-item-link {
@@ -244,6 +245,13 @@
 	height: 100%;
 	pointer-events: none;
 	transform: translate3d(0,101%,0);
+}
+
+.social__menu-item.linkedin .marquee {
+  @apply bg-linkedin;
+}
+.social__menu-item.behance .marquee {
+  @apply bg-behance;
 }
 
 .marquee__inner-wrap {
@@ -278,8 +286,8 @@
 }
 
 .marquee span {
+  @apply text-white;
 	text-align: center;
-	color: var(--marquee-text);
 	font-weight: 400;
 }
 

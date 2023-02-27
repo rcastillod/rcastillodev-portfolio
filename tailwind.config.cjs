@@ -16,6 +16,8 @@ module.exports = {
         'secondary-shade': '#40c082',
         'secondary-tint': '#5bde9f',
         'grey': '#69686D',
+        'linkedin': '#0077b5',
+        'behance': '#053eff ',
       },
     },
   },

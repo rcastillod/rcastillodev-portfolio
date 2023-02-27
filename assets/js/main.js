@@ -54,6 +54,7 @@ const DOM = {
     titleBottom: document.querySelector('.menu__content-title--down'),
     about: document.querySelector('.menu__content-about'),
     aboutText: document.querySelector('.menu__content-about-text'),
+    socialList: document.querySelectorAll('.social__menu'),
     bottomImages: document.querySelectorAll('.menu__content-image--1 > .menu__content-image-inner, .menu__content-image--2 > .menu__content-image-inner, .menu__content-image--3 > .menu__content-image-inner')
   },
   // Toggle button
@@ -142,7 +143,14 @@ const menuTimeline = gsap.timeline({
     opacity: 1,
     y: '0%',
     stagger: 0.1
-  }, 'images');
+  }, 'images')
+  .to(DOM.menuContent.socialList, {
+    duration: 1,
+    startAt: { y: '20%', opacity: 0 },
+    opacity: 1,
+    y: '0%',
+    stagger: .2
+  }, 'images')
 
 
 // Menu expand
