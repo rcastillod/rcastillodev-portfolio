@@ -9,7 +9,9 @@ gsap.registerPlugin(ScrollTrigger);
 import { Flip } from 'gsap/Flip';
 gsap.registerPlugin(Flip);
 
-// Custom cursor
+/* -------------------------------------------------------------------------- */
+/*                                Custom cursor                               */
+/* -------------------------------------------------------------------------- */
 let cursor = document.querySelector('.cursor'),
   cursorScale = document.querySelectorAll('.cursor-scale'),
   mouseX = 0,
@@ -48,7 +50,9 @@ cursorScale.forEach(link => {
 });
 
 
-// Lenis smooth scrolling
+/* -------------------------------------------------------------------------- */
+/*                           Lenis smooth scrolling                           */
+/* -------------------------------------------------------------------------- */
 let lenis;
 // Initialize Lenis smooth scrolling
 const initSmoothScrolling = () => {
@@ -63,7 +67,9 @@ const initSmoothScrolling = () => {
   requestAnimationFrame(scrollFn);
 };
 
-// initialize the menu
+/* -------------------------------------------------------------------------- */
+/*                             Initialize the menu                            */
+/* -------------------------------------------------------------------------- */
 new Menu(document.querySelector('.social__menu'));
 
 // Project instances (Project is the .content > figure.project)
@@ -75,7 +81,10 @@ setTimeout(() => {
   });
 }, 500)
 
-// DOM elements query
+
+/* -------------------------------------------------------------------------- */
+/*                             DOM elements query                             */
+/* -------------------------------------------------------------------------- */
 const DOM = {
   // Cover image elements
   cover: {
@@ -226,7 +235,9 @@ DOM.toggleBtn.addEventListener('click', ev => {
 })
 
 
-// ScrollTrigger animations for scrolling
+/* -------------------------------------------------------------------------- */
+/*                   ScrollTrigger animations for scrolling                   */
+/* -------------------------------------------------------------------------- */
 const animateOnScroll = () => {
 
   for (const project of projects) {
@@ -274,7 +285,9 @@ const animateOnScroll = () => {
 
   }
 
-  // animate the content background title element as we scroll (horizontally)
+  /* -------------------------------------------------------------------------- */
+  /*              Animate the content background title as we scroll             */
+  /* -------------------------------------------------------------------------- */
   let windowWidth = window.innerWidth;
   gsap.to(DOM.content.backgroundTitles, {
     scrollTrigger: {
@@ -287,7 +300,9 @@ const animateOnScroll = () => {
   });
 }
 
-// Preload images
+/* -------------------------------------------------------------------------- */
+/*                               Preload images                               */
+/* -------------------------------------------------------------------------- */
 preloadImages('.project__image-inner').then(() => {
   document.body.classList.remove('loading');
 
