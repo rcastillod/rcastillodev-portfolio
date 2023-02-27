@@ -1,0 +1,25 @@
+@media (min-width: 80rem) {
+  .cursor{
+    @apply border-2 border-solid border-secondary;
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    margin-left: -20px;
+    margin-top: -20px;
+    border-radius: 50%;
+    transition: transform .3s ease;
+    transform-origin: center center;
+    pointer-events: none;
+    z-index: 1000;
+  }
+  
+  .grow, .grow-small{
+    @apply bg-white;
+    transform: scale(10);
+    mix-blend-mode: difference;
+    border: none;
+  }
+  .grow-small{
+    transform: scale(2.5);
+  }
+}
