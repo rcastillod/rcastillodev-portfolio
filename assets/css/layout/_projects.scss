@@ -19,7 +19,7 @@
 	justify-content: center;
 	display: grid;
 	grid-template-areas: 'caption' 'img';
-	margin: 0 auto 20vh;
+	margin: 0 auto 15vh;
 }
 
 @media screen and (min-width: 53em) {
@@ -27,6 +27,7 @@
 		grid-gap: 1vw;
     grid-template-columns: 25vw 1fr;
     grid-template-areas: 'caption img' ;
+		margin: 0 auto 20vh;
 	}
 }
 
@@ -66,6 +67,13 @@
 	font-size: clamp(2rem,6vw,3.5rem);
 	font-weight: 300;
 	margin: 0;
+	position: relative;
+	overflow: hidden
+}
+
+.project__inner {
+	will-change: transform;
+	display: inline-block;
 }
 
 .project__caption-description {
