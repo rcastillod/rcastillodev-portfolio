@@ -69,7 +69,8 @@
 }
 
 .project__caption-description {
-	max-width: 200px;
+	@apply font-poppins;
+	max-width: 250px;
 	line-height: 1.2;
 }
 

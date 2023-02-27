@@ -10,10 +10,7 @@ const generateProjectsTemplate = (data) => {
     <figure class="project">
       <figcaption class="project__caption">
         <h2 class="project__caption-title oh"><span class="project__inner">${data.attributes.titulo}</span></h2>
-        <p class="project__caption-description">
-          In all energy exchanges, if no energy
-          Enters or leaves an isolated system
-          The entropy of that system increases</p>
+        <p class="project__caption-description">${data.attributes.descripcion}</p>
       </figcaption>
       <div class="project__image-wrap"><div class="project__image"><div class="project__image-inner" style="background-image:url(http://localhost:1337${data.attributes.imagen.data.attributes.url})"></div></div></div>
     </figure>
