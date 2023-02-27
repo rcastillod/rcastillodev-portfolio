@@ -34,7 +34,6 @@ setTimeout(() => {
   [...document.querySelectorAll('.project')].forEach(project => {
     projects.push(new Project(project));
   });
-  console.log(projects)
 }, 500)
 
 // DOM elements query
@@ -63,7 +62,7 @@ const DOM = {
     bottomImages: document.querySelectorAll('.menu__content-image--1 > .menu__content-image-inner, .menu__content-image--2 > .menu__content-image-inner, .menu__content-image--3 > .menu__content-image-inner')
   },
   // Toggle button
-  toggleBtn: document.querySelector('.menu__toggle-btn'),
+  toggleBtn: document.querySelector('.toggle__btn'),
   // Projects
   projects: document.querySelector('.projects')
 };
@@ -87,7 +86,7 @@ const menuTimeline = gsap.timeline({
   .addLabel('start', 0)
   .add(() => {
     // Add pointer events to auto/none
-    DOM.menu.classList[menuStatus.isOpen ? 'add' : 'remove']('menu--open');
+    document.body.classList[menuStatus.isOpen ? 'add' : 'remove']('menu__open');
   }, 'start')
   .to(DOM.cover.wrap, {
     duration: 1.6,

@@ -1,0 +1,58 @@
+.header {
+  @apply px-6 md:px-16;
+  height: 5.9375rem;
+  pointer-events: auto;
+  z-index: 100;
+  grid-area: top;
+  z-index: 20;
+}
+
+/* Menu toggle */
+.toggle__btn {
+  position: relative;
+  gap: 2.1875rem;
+}
+
+.toggle__btn span {
+  position: relative;
+  display: block;
+  height: 2px;
+  width: 1.25rem;
+  background-color: transparent;
+  transform: translate(-50%, -50%);
+  transition: all 0.2s ease-in-out;
+}
+
+.toggle__btn span::before,
+.toggle__btn span::after {
+  @apply bg-white;
+  position: absolute;
+  display: block;
+  content: "";
+  height: 2px;
+  transition: all 0.2s ease-in-out;
+}
+
+.toggle__btn span::before {
+  top: -4px;
+  width: 1.25rem;
+}
+
+.toggle__btn span::after {
+  top: auto;
+  bottom: -4px;
+  right: 0;
+  width: 0.875rem;
+}
+
+.menu__open .toggle__btn span::before {
+  top: 0;
+  width: 20px;
+  transform: rotate(45deg);
+}
+
+.menu__open .toggle__btn span::after {
+  bottom: 0;
+  width: 20px;
+  transform: rotate(-45deg);
+}

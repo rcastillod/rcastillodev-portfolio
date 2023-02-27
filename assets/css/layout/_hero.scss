@@ -1,8 +1,8 @@
 // Hero wrapper
 .hero {
+  @apply h-[75vh] md:h-screen;
   display: grid;
   width: 100%;
-  height: 100vh;
   overflow: hidden;
 }
 
@@ -57,31 +57,20 @@
 
 // Menu
 .menu {
-  grid-template-rows: 6rem 1fr;
-  grid-template-areas:
-      "top"
-      "content";
   display: grid;
   opacity: 0.9;
   position: fixed;
   inset: 0;
-  z-index: 100;
 }
 
-.menu--open {
+.menu__open .menu {
   pointer-events: auto;
-}
-
-.menu__top {
-  @apply px-6 md:px-16;
-  pointer-events: auto;
-  z-index: 100;
-  grid-area: top;
+  z-index: 10;
 }
 
 // Menu content - About
 .menu__content-wrap {
-  grid-area: content;
+  grid-area: 1 / 1 / -1 / -1;
   margin-top: -6rem;
   overflow: hidden;
 }
@@ -91,19 +80,16 @@
 	grid-area: 1 / 1 / -1 / -1;
 	display: grid;
 	padding: 0 1.5rem;
-	grid-template-columns: 31% 31% 31%;
-	grid-column-gap: 3.5%;
-	grid-template-rows: 4rem min-content min-content 2rem auto auto;
-	grid-template-areas: '... ... ...'
-						'content-title-up content-title-up content-title-up'
-						'content-title-down content-title-down content-title-down'
-						'... ... ...'
-						'content-about content-about content-about'
-						'content-img-1 content-img-2 content-img-3';
+  grid-template-rows: 30% min-content min-content auto auto;
+  grid-template-areas: '...'
+          'content-title-up'
+          'content-title-down'
+          'content-about'
+          'social-menu';
 }
 
 .menu__content-title {
-  font-size: clamp(2rem, 10vh, 8vw);
+  font-size: clamp(2.5rem, 10vh, 8vw);
   line-height: 1;
   position: relative;
 	width: min-content;
@@ -131,6 +117,7 @@
 	position: relative;
 	z-index: 100;
 	grid-area: content-about;
+  gap: .9375rem;
 	display: flex;
 	flex-direction: column;
 	font-size: 1.3rem;
@@ -147,44 +134,14 @@
 	margin: 0 0 1rem;
 }
 
-.menu__content-image {
-	position: relative;
-	z-index: 2;
-	display: flex;
-	align-items: flex-end;
-	margin-bottom: -20vh;
-}
-
-.menu__content-image--1 {
-	grid-area: content-img-1;
-}
-
-.menu__content-image--2 {
-	grid-area: content-img-2;
-}
-
-.menu__content-image--3 {
-	grid-area: content-img-3;
-}
-
-.menu__content-image-inner {
-	background-position: 50% 0%;
-	background-size: cover;
-	width: 100%;
-	height: 100%;
-	opacity: 0;
-	border-radius: 20vw 20vw 0 0;
-	will-change: opacity, transform, border-radius;
-}
 
 @media screen and (min-width: 53em) {
 	.menu__content {
-		grid-template-rows: 20% 10vh 10vh auto auto;
+		grid-template-rows: 20% 10vh 10vh auto;
 		grid-template-areas: '... ... ...'
 						'content-title-up content-about content-about'
 						'content-title-down content-about content-about'
-            'social-menu social-menu social-menu'
-						'content-img-1 content-img-2 content-img-3';
+            'social-menu social-menu social-menu';
     padding: 0 4rem;
 	}
 	.menu__content-title {
@@ -192,18 +149,16 @@
 	}
 	.menu__content-about {
 		flex-direction: row;
+    gap: 0;
 		grid-row: 2 / span 2;
 		justify-self: end;
 		max-width: 720px;
-	}
-	.menu__content-image-inner {
-		height: 50vh;
-		border-radius: 20vw 20vw 0 0;
 	}
 }
 
 /* Menu social */
 .social__menu {
+  align-self: flex-end;
   grid-area: social-menu;
   margin-top: 1rem;
   opacity: 0;
@@ -279,7 +234,7 @@
 .social__menu-item-link,
 .marquee span {
 	white-space: nowrap;
-	font-size: 2vw;
+	font-size: clamp(2rem, 10vh, 8vw);
 	line-height: 1.2;
 	font-weight: 600;
 	text-transform: uppercase;
@@ -300,56 +255,6 @@
 	background-position: 50% 50%;
 }
 
-/* Menu toggle */
-.menu__toggle-btn {
-  position: relative;
-  gap: 2.1875rem;
-}
-
-.menu__toggle-btn span {
-  position: relative;
-  display: block;
-  height: 2px;
-  width: 1.25rem;
-  background-color: transparent;
-  transform: translate(-50%, -50%);
-  transition: all 0.2s ease-in-out;
-}
-
-.menu__toggle-btn span::before,
-.menu__toggle-btn span::after {
-  @apply bg-white;
-  position: absolute;
-  display: block;
-  content: "";
-  height: 2px;
-  transition: all 0.2s ease-in-out;
-}
-
-.menu__toggle-btn span::before {
-  top: -4px;
-  width: 1.25rem;
-}
-
-.menu__toggle-btn span::after {
-  top: auto;
-  bottom: -4px;
-  right: 0;
-  width: 0.875rem;
-}
-
-.menu--open .menu__toggle-btn span::before {
-  top: 0;
-  width: 20px;
-  transform: rotate(45deg);
-}
-
-.menu--open .menu__toggle-btn span::after {
-  bottom: 0;
-  width: 20px;
-  transform: rotate(-45deg);
-}
-
 /* Cover image menu */
 .cover-wrap,
 .cover,
@@ -364,7 +269,7 @@
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 100;
+  z-index: 10;
   grid-area: 1 / 1 / 2 / 2;
   display: grid;
 }
