@@ -276,10 +276,12 @@ const animateOnScroll = () => {
   /*              Animate the content background title as we scroll             */
   /* -------------------------------------------------------------------------- */
   let windowWidth = window.innerWidth;
+  console.log(windowWidth)
+  console.log(DOM.content.backgroundTitles.offsetWidth)
   gsap.to(DOM.content.backgroundTitles, {
     scrollTrigger: {
       start: 0,
-      end: 'max',
+      end: '+=50000px',
       scrub: true
     },
     ease: 'none',
