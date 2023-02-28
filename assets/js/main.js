@@ -230,7 +230,11 @@ const animateOnScroll = () => {
 
   for (const project of projects) {
 
-    gsap.set(project.DOM.imageInner, { transformOrigin: '50% 0%' });
+    gsap.set(project.DOM.imageInner, {
+      transformOrigin: '50% 0%',
+      scaleY: 1.2,
+      scaleX: 1.2,
+    });
 
     gsap.timeline({
       scrollTrigger: {
@@ -243,10 +247,9 @@ const animateOnScroll = () => {
       .addLabel('start', 0)
       // scale up the inner image
       .to(project.DOM.imageInner, {
-        backgroundPosition: "0px -100px",
         ease: 'none',
-        scaleY: 1.2,
-        scaleX: 1.2,
+        scaleY: 1,
+        scaleX: 1,
         opacity: 0
       }, 'start')
       // translate the title and number
@@ -276,8 +279,6 @@ const animateOnScroll = () => {
   /*              Animate the content background title as we scroll             */
   /* -------------------------------------------------------------------------- */
   let windowWidth = window.innerWidth;
-  console.log(windowWidth)
-  console.log(DOM.content.backgroundTitles.offsetWidth)
   gsap.to(DOM.content.backgroundTitles, {
     scrollTrigger: {
       start: 0,
