@@ -6,8 +6,6 @@ import Lenis from '@studio-freight/lenis'
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
-import { Flip } from 'gsap/Flip';
-gsap.registerPlugin(Flip);
 
 /* -------------------------------------------------------------------------- */
 /*                                Custom cursor                               */
@@ -112,7 +110,9 @@ const DOM = {
   // Toggle button
   toggleBtn: document.querySelector('.toggle__btn'),
   // Projects
-  projects: document.querySelector('.projects')
+  projects: document.querySelector('.projects'),
+  // Project technologies
+  technologies: document.querySelector('.project__technologies')
 };
 
 // Variables to set menu status
@@ -184,18 +184,6 @@ const menuTimeline = gsap.timeline({
     opacity: 1
   }, 'extra+=0.5')
   .addLabel('images', 'extra+=0.6')
-  .set(DOM.menuContent.bottomImages, {
-    y: '400%',
-    opacity: 0
-  }, 'images')
-  .to(DOM.menuContent.bottomImages, {
-    duration: 0.8,
-    ease: 'power4',
-    startAt: { opacity: 1 },
-    opacity: 1,
-    y: '0%',
-    stagger: 0.1
-  }, 'images')
   .to(DOM.menuContent.socialList, {
     duration: 1,
     startAt: { y: '20%', opacity: 0 },
@@ -282,7 +270,6 @@ const animateOnScroll = () => {
         ease: 'none',
         opacity: 0
       }, 'start')
-
   }
 
   /* -------------------------------------------------------------------------- */
@@ -297,7 +284,7 @@ const animateOnScroll = () => {
     },
     ease: 'none',
     x: () => -DOM.content.backgroundTitles.offsetWidth - (13.25 * windowWidth / 100 + 25 * windowWidth / 100 + windowWidth / 100) + windowWidth
-  });
+  })
 }
 
 /* -------------------------------------------------------------------------- */

@@ -14,25 +14,27 @@ const generateProjectsTemplate = (data) => {
       </figcaption>
       <div class="project__image-wrap">
         <div class="project__image"><div class="project__image-inner" style="background-image:url(http://localhost:1337${data.attributes.imagen.data.attributes.url})"></div></div>
-        <div class="project__technologies">${getTechnologies(data.attributes.technologies)}</div>
+        <div class="project__technologies"><div>${getTechnologies(data.attributes.technologies)}</div></div>
       </div>
     </figure>
   `
 }
 
-// Rende the data to de DOM
+// Render the data to de DOM
 const renderProjectsData = (node, data) => {
   const projectsHtml = data.data.map(project => generateProjectsTemplate(project)).join('')
   node.innerHTML = projectsHtml
 }
 
+// Render the technologies inside a span tag
 const getTechnologies = (tech) => {
   const techNewArray = []
   const technologiesHtml = tech.data
   technologiesHtml.forEach(el => {
     techNewArray.push(`<span>${el.attributes.Nombre}</span>`)
   });
-  return techNewArray
+  // Remove comma separator
+  return techNewArray.join('<span class="separator">*</span>')
 }
 
 // Fetch data from Strapi

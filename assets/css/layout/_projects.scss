@@ -82,6 +82,19 @@
 	line-height: 1.2;
 }
 
-.project__caption-number {
-	display: inline-block;
+.project__technologies {
+	font-weight: 600;
+	font-size: 2rem;
+	opacity: .3;
+	overflow: hidden
+}
+
+.project__technologies > div {
+	display: flex;
+	gap: 1.2vw;
+	will-change: transform;
+}
+
+.project__technologies span.separator {
+	@apply text-secondary leading-loose;
 }

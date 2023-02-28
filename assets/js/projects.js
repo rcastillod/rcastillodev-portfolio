@@ -35,5 +35,6 @@ export class Project {
     this.DOM.title = this.DOM.el.querySelector('.project__caption-title');
     this.DOM.titleInner = this.DOM.title.querySelector('.project__inner');
     this.DOM.description = this.DOM.el.querySelector('.project__caption-description');
+    this.DOM.technologies = this.DOM.el.querySelector('.project__technologies > div');
   }
 }
