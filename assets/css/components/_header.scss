@@ -25,7 +25,7 @@
 
 .toggle__btn span::before,
 .toggle__btn span::after {
-  @apply bg-white;
+  @apply bg-primary dark:bg-white;
   position: absolute;
   display: block;
   content: "";

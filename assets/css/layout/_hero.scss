@@ -17,7 +17,6 @@
 }
 
 .content__caption-title {
-  @apply text-white;
   font-size: clamp(2.25rem, 7vw, 7rem);
   position: relative;
   margin: 0;
@@ -37,7 +36,7 @@
 
 /* Content background title */
 .content__caption-background {
-  @apply text-white;
+  @apply text-primary dark:text-white;
   position: absolute;
   display: flex;
   align-items: center;
@@ -114,6 +113,10 @@
   -webkit-text-fill-color: transparent;
 }
 
+.light-mode .menu__content-title--down {
+  -webkit-text-stroke-color: #161519;
+}
+
 .menu__content-about {
 	position: relative;
 	z-index: 100;
@@ -165,14 +168,14 @@
   opacity: 0;
 }
 .social__menu-item {
-  @apply border-t border-white/20;
+  @apply border-t border-primary/20 dark:border-white/20;
 	cursor: default;
 	position: relative;
 	overflow: hidden;
 }
 
 .social__menu-item:last-child {
-  @apply border-b border-white/20;
+  @apply border-b border-primary/20 dark:border-white/20;
 }
 
 .social__menu-item-link {
@@ -283,14 +286,14 @@
 }
 
 .cover__inner {
-  background-image: url(../img/cover-bg.jpg);
+  @apply bg-[url('../img/cover-bg-light.jpg')] dark:bg-[url('../img/cover-bg.jpg')];
   background-position: 50%;
   background-size: cover;
   position: relative;
   transform: translateY(100%);
 
   &::after {
-    @apply bg-primary/50;
+    @apply bg-primary-light/50 dark:bg-primary/50;
     content: '';
     position: absolute;
     top: 0;
