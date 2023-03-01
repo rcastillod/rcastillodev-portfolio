@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./*.{html,js}"],
-  darkMode: 'media',
+  darkMode: 'class',
   theme: {
     fontFamily: {
       sans: ['Syne', 'sans-serif'],

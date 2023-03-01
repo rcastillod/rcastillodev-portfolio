@@ -1,0 +1,117 @@
+.color__switcher-wrapper {
+  position: fixed;
+  top: 50%;
+  min-height: 3.5rem;
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+  left: 4vh;
+  transform-origin: left top;
+  transform: rotate(-90deg) translate(-50%,0);
+  z-index: 4;
+}
+.color__switcher {
+  font-weight: 500;
+  font-size: .85em;
+  position: relative;
+  height: 1.7rem;
+  background-color: rgba(150,144,162,.25);
+  cursor: pointer;
+  box-shadow: 0 0 0 2px rgb(150 144 162 / 15%) inset;
+  border-radius: 0.85rem;
+  display: flex;
+  justify-content: center;
+  width: 7rem;
+}
+
+.color__switcher-item, .color__switcher-toddler-item {
+  width: 100%;
+  height: 100%;
+  padding: 0 0.45rem 0 0.45rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.color__switcher-item-state {
+  margin: 0;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.color__switcher-item-state>span {
+  line-height: 1;
+}
+
+@media screen and (min-width: 1181px) {
+  .color__switcher.dark .color__switcher-toddler .color__switcher-toddler-item svg {
+      transform: rotate(90deg);
+  }
+  .color__switcher:not(.dark) .color__switcher-item.dark svg {
+      display: none;
+  }
+  .color__switcher.dark .color__switcher-item.light svg {
+      display: none;
+  }
+  .color__switcher-item-state svg {
+      margin-left: 0.2rem;
+      margin-right: -0.2rem;
+  }
+}
+
+.color__switcher-item-state svg {
+    fill: #161519;
+}
+
+.color__switcher-toddler {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 1.7rem;
+  transition: all cubic-bezier(.645,.045,.355,1) .35s;
+  transition-property: -webkit-transform;
+  transition-property: transform;
+  transition-property: transform,-webkit-transform;
+}
+
+.color__switcher-toddler-wrap {
+  position: relative;
+  height: 100%;
+}
+
+.color__switcher-toddler-item {
+  position: absolute;
+  background-color: #fff;
+  width: 100%;
+  box-shadow: -3px 0 6px rgb(17 16 19 / 5%);
+  color: initial;
+  border-radius: 0.85rem;
+}
+
+// States
+.color__switcher.dark .color__switcher-toddler .color__switcher-toddler-item.dark,
+.dark .color__switcher-toddler .color__switcher-toddler-item.dark {
+  z-index: 1;
+}
+.color__switcher.light .color__switcher-item.dark,
+.light .color__switcher-item.dark {
+  min-width: auto;
+}
+.color__switcher.dark .color__switcher-item.light,
+.dark .color__switcher-item.light {
+  min-width: auto;
+}
+.color__switcher.light .color__switcher-item.light,
+.color__switcher.light .color__switcher-toddler,
+.color__switcher.dark .color__switcher-item.dark,
+.color__switcher.dark .color__switcher-toddler {
+  min-width: 65px;
+}
+
+.color__switcher.dark .color__switcher-toddler,
+.dark .color__switcher-toddler {
+  transform: translateX(-47.7966px);
+}

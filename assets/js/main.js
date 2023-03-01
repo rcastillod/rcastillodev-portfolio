@@ -50,27 +50,31 @@ cursorScale.forEach(link => {
 /* -------------------------------------------------------------------------- */
 /*                                  Dark Mode                                 */
 /* -------------------------------------------------------------------------- */
-const body = document.body;
-const btn = document.querySelector("button");
+const html = document.documentElement;
+const switcher = document.querySelector(".color__switcher");
 const preferenceQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
 const addDarkMode = () => {
-  body.classList.remove("light-mode");
-  body.classList.add("dark-mode");
+  html.classList.remove("light");
+  html.classList.add("dark");
+  switcher.classList.remove('light')
+  switcher.classList.add('dark')
 };
 
 const addLightMode = () => {
-  body.classList.remove("dark-mode");
-  body.classList.add("light-mode");
+  html.classList.remove("dark");
+  html.classList.add("light");
+  switcher.classList.remove('dark')
+  switcher.classList.add('light')
 };
 
 const toggleTheme = () =>
-  !body.classList.contains("dark-mode") ? addDarkMode() : addLightMode();
+  !html.classList.contains("dark") ? addDarkMode() : addLightMode();
 
 const checkPreference = () =>
   preferenceQuery.matches ? addDarkMode() : addLightMode();
 
-// btn.addEventListener("click", toggleTheme);
+switcher.addEventListener("click", toggleTheme);
 preferenceQuery.addEventListener("change", checkPreference);
 // window.addEventListener("DOMContentLoaded", checkPreference);
 (() => checkPreference())();
