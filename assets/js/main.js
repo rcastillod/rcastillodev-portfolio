@@ -51,12 +51,14 @@ cursorScale.forEach(link => {
 /*                                  Dark Mode                                 */
 /* -------------------------------------------------------------------------- */
 const html = document.documentElement;
+const logo = document.getElementById('logo')
 const switcher = document.querySelector(".color__switcher");
 const preferenceQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
 const addDarkMode = () => {
   html.classList.remove("light");
   html.classList.add("dark");
+  logo.src = 'assets/img/logorcDevDark.svg'
   switcher.classList.remove('light')
   switcher.classList.add('dark')
 };
@@ -64,6 +66,7 @@ const addDarkMode = () => {
 const addLightMode = () => {
   html.classList.remove("dark");
   html.classList.add("light");
+  logo.src = 'assets/img/logorcDevLight.svg'
   switcher.classList.remove('dark')
   switcher.classList.add('light')
 };
@@ -76,9 +79,8 @@ const checkPreference = () =>
 
 switcher.addEventListener("click", toggleTheme);
 preferenceQuery.addEventListener("change", checkPreference);
-// window.addEventListener("DOMContentLoaded", checkPreference);
-(() => checkPreference())();
 
+(() => checkPreference())();
 
 /* -------------------------------------------------------------------------- */
 /*                           Lenis smooth scrolling                           */
@@ -287,7 +289,7 @@ const animateOnScroll = () => {
       // translate the title and number
       .to(project.DOM.title, {
         ease: 'none',
-        yPercent: -150,
+        yPercent: -50,
         opacity: 0
       }, 'start')
       // translate the inner title/number (overflow is hidden so they get hidden)
