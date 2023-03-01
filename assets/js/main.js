@@ -289,7 +289,7 @@ const animateOnScroll = () => {
       // translate the title and number
       .to(project.DOM.title, {
         ease: 'none',
-        yPercent: -50,
+        yPercent: -150,
         opacity: 0
       }, 'start')
       // translate the inner title/number (overflow is hidden so they get hidden)
@@ -301,7 +301,7 @@ const animateOnScroll = () => {
           scrub: true,
         },
         ease: 'expo.in',
-        yPercent: -100
+        yPercent: -10
       }, 'start')
       .to(project.DOM.description, {
         ease: 'none',
