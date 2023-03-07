@@ -284,7 +284,6 @@ const animateOnScroll = () => {
         ease: 'none',
         scaleY: 1,
         scaleX: 1,
-        opacity: 0
       }, 'start')
       // translate the title and number
       .to(project.DOM.title, {
