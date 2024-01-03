@@ -11,6 +11,15 @@
   transform: rotate(-90deg) translate(-50%,0);
   z-index: 4;
 }
+
+@media screen and (max-width: 1180px) {
+  .color__switcher-wrapper {
+    left: 1.25rem;
+    min-height: unset;
+    width: 100vh;
+  }
+}
+
 .color__switcher {
   font-weight: 500;
   font-size: .85em;
@@ -22,7 +31,20 @@
   border-radius: 0.85rem;
   display: flex;
   justify-content: center;
-  width: 7rem;
+}
+
+@media screen and (max-width: 1180px) {
+  .color__switcher {
+    background-color: #e5e3e8;
+    height: 2.5rem;
+    z-index: 100;
+    position: absolute;
+    border-radius: 1.25rem;
+    transform: rotate(-90deg) translate(100%,100%);
+    top: calc(100vw - 1.25rem);
+    right: calc(100vh - 1.25rem * 2);
+    transform: rotate(-90deg) translate(100%,100%);
+  }
 }
 
 .color__switcher-item, .color__switcher-toddler-item {
@@ -34,6 +56,16 @@
   justify-content: center;
 }
 
+@media screen and (max-width: 1180px) {
+  .color__switcher-item, .color__switcher-toddler-item {
+      padding: 0;
+      width: 2.5rem!important;
+      min-width: 2.5rem!important;
+      -webkit-border-radius: 1.25rem;
+      border-radius: 1.25rem;
+  }
+}
+
 .color__switcher-item-state {
   margin: 0;
   height: 1.5rem;
@@ -42,14 +74,24 @@
   justify-content: center;
 }
 
+@media screen and (max-width: 1180px) {
+  .color__switcher .color__switcher-item.dark .color__switcher-item-state, 
+  .color__switcher .color__switcher-toddler-item.dark .color__switcher-item-state {
+      transform: rotate(180deg);
+  }
+}
+
 .color__switcher-item-state>span {
   line-height: 1;
 }
 
-@media screen and (min-width: 1181px) {
-  .color__switcher.dark .color__switcher-toddler .color__switcher-toddler-item svg {
-      transform: rotate(90deg);
+@media screen and (max-width: 1180px) {
+  .color__switcher .caption {
+      display: none;
   }
+}
+
+@media screen and (min-width: 1181px) {
   .color__switcher:not(.dark) .color__switcher-item.dark svg {
       display: none;
   }
@@ -62,8 +104,23 @@
   }
 }
 
+@media screen and (max-width: 1180px) {
+  .color__switcher .color__switcher-item.dark .color__switcher-item-state, 
+  .color__switcher .color__switcher-toddler-item.dark .color__switcher-item-state {
+      -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+      transform: rotate(180deg);
+  }
+}
+
 .color__switcher-item-state svg {
     fill: #161519;
+}
+
+@media screen and (max-width: 1180px) {
+  .color__switcher svg {
+      transform: scale(1.2);
+  }
 }
 
 .color__switcher-toddler {
@@ -72,9 +129,14 @@
   right: 0;
   height: 1.7rem;
   transition: all cubic-bezier(.645,.045,.355,1) .35s;
-  transition-property: -webkit-transform;
   transition-property: transform;
-  transition-property: transform,-webkit-transform;
+}
+
+@media screen and (max-width: 1180px) {
+  .color__switcher-toddler {
+      height: 2.5rem!important;
+      width: 2.5rem!important;
+  }
 }
 
 .color__switcher-toddler-wrap {
@@ -88,7 +150,14 @@
   width: 100%;
   box-shadow: -3px 0 6px rgb(17 16 19 / 5%);
   color: initial;
-  border-radius: 0.85rem;
+  border-radius: 1.25rem;
+}
+
+@media screen and (max-width: 1180px) {
+  .color__switcher-toddler-item {
+      box-shadow: 1px 1px 6px rgb(17 16 19 / 5%);
+      padding: 0;
+  }
 }
 
 // States
@@ -96,6 +165,20 @@
 .dark .color__switcher-toddler .color__switcher-toddler-item.dark {
   z-index: 1;
 }
+
+.color__switcher.dark .color__switcher-toddler .color__switcher-toddler-item {
+  color: #fff;
+  background-color: #4a4653;
+}
+
+.color__switcher.dark .color__switcher-toddler .color__switcher-toddler-item svg {
+  fill: #fff;
+}
+
+.color__switcher.dark .color__switcher-item.light svg {
+  fill: rgba(255,255,255,.75);
+}
+
 .color__switcher.light .color__switcher-item.dark,
 .light .color__switcher-item.dark {
   min-width: auto;
@@ -104,14 +187,27 @@
 .dark .color__switcher-item.light {
   min-width: auto;
 }
-.color__switcher.light .color__switcher-item.light,
-.color__switcher.light .color__switcher-toddler,
-.color__switcher.dark .color__switcher-item.dark,
-.color__switcher.dark .color__switcher-toddler {
-  min-width: 65px;
+
+@media screen and (min-width: 1180px) {
+  .color__switcher.light .color__switcher-item.light,
+  .color__switcher.light .color__switcher-toddler,
+  .color__switcher.dark .color__switcher-item.dark,
+  .color__switcher.dark .color__switcher-toddler {
+    min-width: 65px;
+  }
 }
 
 .color__switcher.dark .color__switcher-toddler,
 .dark .color__switcher-toddler {
   transform: translateX(-47.7966px);
+}
+
+@media screen and (max-width: 1180px) {
+  .color__switcher.dark {
+    background-color: rgba(40,37,44,.95);
+  }
+  .color__switcher.dark .color__switcher-toddler,
+  .dark .color__switcher-toddler {
+    transform: translateX(-100%);
+  }
 }
