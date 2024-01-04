@@ -1,17 +1,17 @@
 html {
-  scroll-behavior: initial;
+	scroll-behavior: initial;
 }
 
 html,
 body {
-  width: 100%;
-  min-height: 100%;
+	width: 100%;
+	min-height: 100%;
 }
 
 body {
-  @apply bg-primary-light dark:bg-primary text-primary dark:text-white relative transition-colors duration-700;
+	@apply bg-primary-light dark:bg-primary text-primary dark:text-white relative transition-colors duration-700;
 }
 
 body.menu__open {
-  overflow: hidden;
+	overflow: hidden;
 }
