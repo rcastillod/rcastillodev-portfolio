@@ -1,5 +1,8 @@
 .about {
+	@apply bg-primary-light dark:bg-primary;
 	overflow: hidden;
+	position: relative;
+	z-index: 1;
 }
 
 .about-content {

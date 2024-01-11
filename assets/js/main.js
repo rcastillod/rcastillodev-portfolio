@@ -334,6 +334,26 @@ preloadImages('.project__image-inner').then(() => {
 	}, 600)
 });
 
+
+/* -------------------------------------------------------------------------- */
+/*                                Text marquee                                */
+/* -------------------------------------------------------------------------- */
+const projectMarqueeInner = document.querySelector('.content__caption-marquee_title')
+let wrapWidth = projectMarqueeInner.offsetWidth;
+
+gsap.to(projectMarqueeInner, {
+	duration: 15,
+	ease: "none",
+	repeat: -1,
+	immediateRender: false,
+	x: `-=${wrapWidth / 2}`
+});
+
+gsap.to(".marquee__inner", {
+	x: `-=300`,
+	immediateRender: false,
+});
+
 /* -------------------------------------------------------------------------- */
 /*                          Image rotation animation                          */
 /* -------------------------------------------------------------------------- */
@@ -487,18 +507,20 @@ const items = [
 // Iterate over the items and apply their animations
 items.forEach(item => {
 	const itemElement = document.querySelector(item.id);
-	// Check if element exists and has an animation profile
-	if (itemElement && item.animationProfile) {
-		// Apply the animation profile to the element with the specified options
-		item.animationProfile(itemElement, item.options);
+	setTimeout(() => {
+		// Check if element exists and has an animation profile
+		if (itemElement && item.animationProfile) {
+			// Apply the animation profile to the element with the specified options
+			item.animationProfile(itemElement, item.options);
 
-		// Check if the interactive tilt effect should be applied
-		if (item.interactiveTilt) {
-			// Instantiate the InteractiveTilt object for this item
-			new InteractiveTilt(itemElement);
+			// Check if the interactive tilt effect should be applied
+			if (item.interactiveTilt) {
+				// Instantiate the InteractiveTilt object for this item
+				new InteractiveTilt(itemElement);
+			}
+		} else {
+			// Warn if the element or animation profile is not found
+			console.warn(`Element with ID ${item.id} or its animation profile is not defined.`);
 		}
-	} else {
-		// Warn if the element or animation profile is not found
-		console.warn(`Element with ID ${item.id} or its animation profile is not defined.`);
-	}
+	}, 1000);
 });

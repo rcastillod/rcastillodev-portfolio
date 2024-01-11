@@ -2,7 +2,7 @@
 const endpointUrl = 'http://localhost:1337/api/proyectos?populate=*'
 
 // Root node to inject projects
-const rootNode = document.getElementById('projects')
+const rootNode = document.querySelector('.projects-wrapper')
 
 // Generate project templates
 const generateProjectsTemplate = (data) => {
@@ -23,7 +23,7 @@ const generateProjectsTemplate = (data) => {
 // Render the data to de DOM
 const renderProjectsData = (node, data) => {
 	const projectsHtml = data.data.map(project => generateProjectsTemplate(project)).join('')
-	node.innerHTML = projectsHtml
+	node.innerHTML += projectsHtml
 }
 
 // Render the technologies inside a span tag
