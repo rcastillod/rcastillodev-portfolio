@@ -336,25 +336,6 @@ preloadImages('.project__image-inner').then(() => {
 
 
 /* -------------------------------------------------------------------------- */
-/*                                Text marquee                                */
-/* -------------------------------------------------------------------------- */
-const projectMarqueeInner = document.querySelector('.content__caption-marquee_title')
-let wrapWidth = projectMarqueeInner.offsetWidth;
-
-gsap.to(projectMarqueeInner, {
-	duration: 15,
-	ease: "none",
-	repeat: -1,
-	immediateRender: false,
-	x: `-=${wrapWidth / 2}`
-});
-
-gsap.to(".marquee__inner", {
-	x: `-=300`,
-	immediateRender: false,
-});
-
-/* -------------------------------------------------------------------------- */
 /*                          Image rotation animation                          */
 /* -------------------------------------------------------------------------- */
 

@@ -1,8 +1,17 @@
 .about {
-	@apply bg-primary-light dark:bg-primary;
 	overflow: hidden;
 	position: relative;
 	z-index: 1;
+
+	.content__caption-marquee {
+		top: 90px;
+		left: -50px;
+		rotate: 4deg;
+
+		&_title {
+			animation: textMarqueeToRight 3s linear infinite;
+		}
+	}
 }
 
 .about-content {
