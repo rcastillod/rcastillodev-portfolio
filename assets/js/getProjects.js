@@ -1,5 +1,14 @@
 // Api URL
-const endpointUrl = 'http://localhost:1337/api/proyectos?populate=*'
+// Check if the environment is production
+const isProduction = process.env.NODE_ENV === 'production';
+
+// Set the API URL based on the environment
+const endpointUrl = isProduction
+	? 'https://strapi-portfolio-l13w.onrender.com/api/proyectos?populate=*'
+	: 'http://localhost:1337/api/proyectos?populate=*';
+
+
+// Now, use `endpointUrl` in your API requests
 
 // Root node to inject projects
 const rootNode = document.querySelector('.projects-wrapper')
