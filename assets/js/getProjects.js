@@ -22,7 +22,7 @@ const generateProjectsTemplate = (data) => {
         <p class="project__caption-description">${data.attributes.descripcion}</p>
       </figcaption>
       <div class="project__image-wrap">
-        <div class="project__image"><div class="project__image-inner" style="background-image:url(http://localhost:1337${data.attributes.imagen.data.attributes.url})"></div></div>
+        <div class="project__image"><div class="project__image-inner" style="background-image:url(${data.attributes.imagen.data.attributes.url})"></div></div>
         <div class="project__technologies"><div>${getTechnologies(data.attributes.technologies)}</div></div>
       </div>
     </figure>

@@ -503,5 +503,5 @@ items.forEach(item => {
 			// Warn if the element or animation profile is not found
 			console.warn(`Element with ID ${item.id} or its animation profile is not defined.`);
 		}
-	}, 1000);
+	}, 2000);
 });
