@@ -12,6 +12,38 @@ import logoDarkUrl from './logorcDevDark.svg'
 import logoLightUrl from './logorcDevLight.svg'
 document.getElementById('logo').src = logoDarkUrl
 
+// Spline
+import { Application } from '@splinetool/runtime';
+
+const canvas = document.getElementById('cubesFig');
+const app = new Application(canvas);
+app
+	.load('https://prod.spline.design/Lc21rEwxZf6KYSSw/scene.splinecode')
+	.then(() => {
+		const body = app.findObjectByName("body")
+
+		gsap.set(body.scale, { x: 2, y: 2, z: 2 })
+		gsap.set(body.position, { x: -1000, y: -500 })
+		gsap.set(body.rotation, { x: 0, y: 1.6 })
+
+		const bodyTimeline = gsap.timeline({
+			scrollTrigger: {
+				trigger: '.projects',
+				start: 'top center',
+				end: 'bottom bottom',
+				scrub: true
+			}
+		})
+			.to(body.position, { x: -1050, y: -1000 }, 0)
+			.to(body.scale, { x: 3, y: 3, z: 3 }, 0)
+			.to(body.rotation, { x: -Math.PI / 14, z: Math.PI / 46 }, 0)
+
+	})
+
+
+
+
+
 /* -------------------------------------------------------------------------- */
 /*                                Custom cursor                               */
 /* -------------------------------------------------------------------------- */

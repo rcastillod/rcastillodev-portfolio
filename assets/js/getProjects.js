@@ -59,7 +59,6 @@ const getProjects = async (url) => {
 		renderProjectsData(rootNode, data)
 
 		const projectss = document.querySelectorAll('.project')
-		console.log(projectss)
 
 		projectss.forEach((project) => {
 
