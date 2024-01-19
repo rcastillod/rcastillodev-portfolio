@@ -1,3 +1,7 @@
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+
 // Api URL
 // Check if the environment is production
 const isProduction = process.env.NODE_ENV === 'production';
@@ -53,6 +57,56 @@ const getProjects = async (url) => {
 		const data = await response.json()
 
 		renderProjectsData(rootNode, data)
+
+		const projectss = document.querySelectorAll('.project')
+		console.log(projectss)
+
+		projectss.forEach((project) => {
+
+			const imageInner = project.querySelector('.project__image-inner')
+			const title = project.querySelector('.project__caption-title')
+			const titleInner = project.querySelector('.project__inner')
+
+			gsap.set(imageInner, {
+				transformOrigin: '50% 0%',
+				scaleY: 1.2,
+				scaleX: 1.2,
+			});
+
+			gsap.timeline({
+				scrollTrigger: {
+					trigger: project,
+					start: 'top bottom',
+					end: 'bottom top',
+					scrub: true
+				}
+			})
+				.addLabel('start', 0)
+				// scale up the inner image
+				.to(imageInner, {
+					ease: 'none',
+					scaleY: 1,
+					scaleX: 1,
+				}, 'start')
+				// translate the title and number
+				.to(title, {
+					ease: 'none',
+					yPercent: -150,
+					opacity: 0
+				}, 'start')
+				// translate the inner title/number (overflow is hidden so they get hidden)
+				.to(titleInner, {
+					scrollTrigger: {
+						trigger: project,
+						start: 'top bottom',
+						end: 'top 20%',
+						scrub: true,
+					},
+					ease: 'expo.in',
+					yPercent: -10
+				}, 'start')
+
+		})
 
 	} catch (error) {
 		console.log('Error', error.message)

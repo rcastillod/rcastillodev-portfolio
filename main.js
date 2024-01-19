@@ -109,15 +109,6 @@ const initSmoothScrolling = () => {
 /* -------------------------------------------------------------------------- */
 new Menu(document.querySelector('.social__menu'));
 
-// Project instances (Project is the .content > figure.project)
-const projects = [];
-
-setTimeout(() => {
-	[...document.querySelectorAll('.project')].forEach(project => {
-		projects.push(new Project(project));
-	});
-}, 500)
-
 
 /* -------------------------------------------------------------------------- */
 /*                             DOM elements query                             */
@@ -263,58 +254,10 @@ DOM.toggleBtn.addEventListener('click', ev => {
 
 
 /* -------------------------------------------------------------------------- */
-/*                   ScrollTrigger animations for scrolling                   */
+/*              Animate the content background title as we scroll             */
 /* -------------------------------------------------------------------------- */
-const animateOnScroll = () => {
+const headingAnimateOnScroll = () => {
 
-	for (const project of projects) {
-
-		gsap.set(project.DOM.imageInner, {
-			transformOrigin: '50% 0%',
-			scaleY: 1.2,
-			scaleX: 1.2,
-		});
-
-		gsap.timeline({
-			scrollTrigger: {
-				trigger: project.DOM.el,
-				start: 'top bottom',
-				end: 'bottom top',
-				scrub: true
-			}
-		})
-			.addLabel('start', 0)
-			// scale up the inner image
-			.to(project.DOM.imageInner, {
-				ease: 'none',
-				scaleY: 1,
-				scaleX: 1,
-			}, 'start')
-			// translate the title and number
-			.to(project.DOM.title, {
-				ease: 'none',
-				yPercent: -150,
-				opacity: 0
-			}, 'start')
-			// translate the inner title/number (overflow is hidden so they get hidden)
-			.to(project.DOM.titleInner, {
-				scrollTrigger: {
-					trigger: project.DOM.el,
-					start: 'top bottom',
-					end: 'top 20%',
-					scrub: true,
-				},
-				ease: 'expo.in',
-				yPercent: -10
-			}, 'start')
-			.to(project.DOM.description, {
-				ease: 'none',
-			}, 'start')
-	}
-
-	/* -------------------------------------------------------------------------- */
-	/*              Animate the content background title as we scroll             */
-	/* -------------------------------------------------------------------------- */
 	let windowWidth = window.innerWidth;
 	gsap.to(DOM.content.backgroundTitles, {
 		scrollTrigger: {
@@ -335,7 +278,7 @@ preloadImages('.project__image-inner').then(() => {
 
 	initSmoothScrolling();
 	setTimeout(() => {
-		animateOnScroll();
+		headingAnimateOnScroll();
 	}, 600)
 });
 
