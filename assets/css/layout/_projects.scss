@@ -107,3 +107,128 @@
 .project__technologies span.separator {
 	@apply text-secondary leading-loose;
 }
+
+/* -------------------------------------------------------------------------- */
+/*                               Design Gallery                               */
+/* -------------------------------------------------------------------------- */
+
+.design {
+	display: flex;
+	padding: 15vh 12vw 20vh 20vw;
+	margin-left: 5vw;
+}
+
+.design__item {
+	margin: 0 3vw;
+	display: grid;
+	grid-template-areas: '... ...'
+		'... design-image'
+		'... ...';
+	grid-template-columns: 8rem 21vmax;
+	grid-template-rows: 8rem 28vmax 3rem;
+}
+
+.design__item-img {
+	grid-area: design-image;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+	will-change: transform;
+}
+
+.design__item-imginner {
+	background-size: cover;
+	background-position: 50% 0;
+	width: calc(100% + 10vw);
+	margin-left: -5vw;
+	height: 100%;
+	will-change: transform;
+}
+
+.design__item-caption {
+	grid-area: 1 / 1 / 4 / 3;
+	display: grid;
+	grid-template-areas: 'design-number design-title'
+		'design-link ...'
+		'design-link design-tags';
+	grid-template-columns: 8rem auto;
+	grid-template-rows: 8rem auto 3rem;
+
+}
+
+.design__item-number {
+	grid-area: design-number;
+	font-size: 6rem;
+	font-size: clamp(2.5rem, 9vw, 6.5rem);
+	justify-self: end;
+	padding-right: 2rem;
+	color: var(--color-design-number);
+}
+
+.design__item-title {
+	grid-area: design-title;
+	margin: 0;
+	font-size: 4rem;
+	font-size: clamp(2rem, 5vw, 4rem);
+	color: var(--color-design-title);
+}
+
+.design__item-number,
+.design__item-title,
+.design__text {
+	font-family: moret, serif;
+	font-weight: 800;
+	font-style: italic;
+	align-self: center;
+}
+
+.design__item-link {
+	grid-area: design-link;
+	align-self: end;
+	font-size: 1.5rem;
+	background: var(--color-design-link-bg);
+	color: var(--color-design-link);
+	text-decoration: underline;
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+.design__item-link:focus,
+.design__item-link:hover {
+	background: var(--color-design-link-bg-hover);
+	color: var(--color-design-link-hover);
+	text-decoration: none;
+}
+
+.design__item-tags {
+	grid-area: design-tags;
+	justify-self: end;
+	font-size: 1.5rem;
+	display: grid;
+	grid-auto-flow: column;
+	grid-gap: 1rem;
+	cursor: pointer;
+}
+
+.design__text {
+	font-size: 20vw;
+	line-height: 0.8;
+	margin: 0 12vw;
+	text-transform: lowercase;
+	color: transparent;
+	-webkit-text-stroke: 1px #645c5b;
+	text-stroke: 1px #645c5b;
+	-webkit-text-fill-color: transparent;
+	text-fill-color: transparent;
+}
+
+.design__text-inner {
+	display: block;
+}

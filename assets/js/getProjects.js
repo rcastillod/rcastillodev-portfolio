@@ -8,8 +8,8 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 // Set the API URL based on the environment
 const endpointUrl = isProduction
-	? 'https://strapi-portfolio-l13w.onrender.com/api/proyectos?populate=*'
-	: 'http://localhost:1337/api/proyectos?populate=*';
+	? 'https://strapi-portfolio-l13w.onrender.com/api/proyectos?filters[categorias][nombre][$eq]=Web%20development&populate=*'
+	: 'http://localhost:1337/api/proyectos?filters[categorias][nombre][$eq]=Web%20development&populate=*';
 
 
 // Now, use `endpointUrl` in your API requests
@@ -20,16 +20,18 @@ const rootNode = document.querySelector('.projects-wrapper')
 // Generate project templates
 const generateProjectsTemplate = (data) => {
 	return `
-    <figure class="project">
-      <figcaption class="project__caption">
-        <h2 class="project__caption-title oh"><span class="project__inner">${data.attributes.titulo}</span></h2>
-        <p class="project__caption-description">${data.attributes.descripcion}</p>
-      </figcaption>
-      <div class="project__image-wrap">
-        <div class="project__image"><div class="project__image-inner" style="background-image:url(${data.attributes.imagen.data.attributes.url})"></div></div>
-        <div class="project__technologies"><div>${getTechnologies(data.attributes.technologies)}</div></div>
-      </div>
-    </figure>
+		<figure class="project">
+			<figcaption class="project__caption">
+				<h2 class="project__caption-title oh"><span class="project__inner">${data.attributes.titulo}</span></h2>
+				<p class="project__caption-description">${data.attributes.descripcion}</p>
+			</figcaption>
+			<a href="${data.attributes.Url}" class="project__link cursor-scale" target="_blank">
+				<div class="project__image-wrap">
+					<div class="project__image"><div class="project__image-inner" style="background-image:url(${data.attributes.imagen.data.attributes.url})"></div></div>
+					<div class="project__technologies"><div>${getTechnologies(data.attributes.technologies)}</div></div>
+				</div>
+			</a>
+		</figure>
   `
 }
 
@@ -58,9 +60,9 @@ const getProjects = async (url) => {
 
 		renderProjectsData(rootNode, data)
 
-		const projectss = document.querySelectorAll('.project')
+		const projects = document.querySelectorAll('.project')
 
-		projectss.forEach((project) => {
+		projects.forEach((project) => {
 
 			const imageInner = project.querySelector('.project__image-inner')
 			const title = project.querySelector('.project__caption-title')
