@@ -112,7 +112,7 @@
 /*                               Design Gallery                               */
 /* -------------------------------------------------------------------------- */
 
-.design {
+.designs-wrapper {
 	display: flex;
 	padding: 15vh 12vw 20vh 20vw;
 	margin-left: 5vw;
@@ -151,7 +151,7 @@
 	display: grid;
 	grid-template-areas: 'design-number design-title'
 		'design-link ...'
-		'design-link design-tags';
+		'design-tags design-tags';
 	grid-template-columns: 8rem auto;
 	grid-template-rows: 8rem auto 3rem;
 
@@ -167,44 +167,19 @@
 }
 
 .design__item-title {
+	@apply text-secondary;
 	grid-area: design-title;
 	margin: 0;
 	font-size: 4rem;
-	font-size: clamp(2rem, 5vw, 4rem);
-	color: var(--color-design-title);
+	font-size: clamp(2rem, 5vw, 2.2rem);
+	margin-block-end: .625rem;
 }
 
 .design__item-number,
 .design__item-title,
 .design__text {
-	font-family: moret, serif;
 	font-weight: 800;
-	font-style: italic;
-	align-self: center;
-}
-
-.design__item-link {
-	grid-area: design-link;
 	align-self: end;
-	font-size: 1.5rem;
-	background: var(--color-design-link-bg);
-	color: var(--color-design-link);
-	text-decoration: underline;
-	width: 120px;
-	height: 120px;
-	border-radius: 50%;
-	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	cursor: pointer;
-}
-
-.design__item-link:focus,
-.design__item-link:hover {
-	background: var(--color-design-link-bg-hover);
-	color: var(--color-design-link-hover);
-	text-decoration: none;
 }
 
 .design__item-tags {

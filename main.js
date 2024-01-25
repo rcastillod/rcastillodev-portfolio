@@ -1,6 +1,7 @@
 import { preloadImages, isInViewport } from '/assets/js/extras';
 import { Menu } from '/assets/js/menu';
 import getProjects from '/assets/js/getProjects'
+import getDesigns from '/assets/js/getDesigns'
 import { Project } from '/assets/js/projects';
 import Lenis from '@studio-freight/lenis'
 import { gsap } from 'gsap';
@@ -39,46 +40,19 @@ app
 			.to(body.rotation, { x: -Math.PI / 14, z: Math.PI / 46 }, 0)
 
 		// Add another trigger
-		// const bodyTimeline02 = gsap.timeline({
-		// 	scrollTrigger: {
-		// 		trigger: '.about',
-		// 		start: 'top bottom',
-		// 		end: 'bottom bottom',
-		// 		scrub: true,
-		// 	},
-		// })
-		// 	.to(body.position, { x: 0, y: -500 }, 0)
-		// 	.to(body.scale, { x: 1.2, y: 1.2, z: 1.2 }, 0)
-		// 	.to(body.rotation, { x: -0.1, y: 0, z: 0 }, 0)
+		const bodyTimeline02 = gsap.timeline({
+			scrollTrigger: {
+				trigger: '.designs',
+				start: 'top bottom',
+				end: 'bottom bottom',
+				scrub: true,
+			},
+		})
+			.to(body.position, { x: 0, y: -500 }, 0)
+			.to(body.scale, { x: 1.2, y: 1.2, z: 1.2 }, 0)
+			.to(body.rotation, { x: -0.1, y: 0, z: 0 }, 0)
 
 	})
-
-
-window.addEventListener("load", function () {
-	const container = document.querySelector('.designs')
-	let containerWidth = container.scrollWidth - document.documentElement.clientWidth;
-
-	setTimeout(() => {
-
-		gsap.to(container, {
-			x: () => -containerWidth,
-			scrollTrigger: {
-				markers: false,
-				trigger: '.designs',
-				start: 'top top',
-				scrub: 0.5,
-				pin: '.gallery',
-				end: () => "+=" + containerWidth,
-				invalidateOnRefresh: true,
-
-			}
-		})
-	}, 5000);
-});
-
-
-
-
 
 
 /* -------------------------------------------------------------------------- */
