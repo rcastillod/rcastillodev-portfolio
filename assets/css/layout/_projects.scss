@@ -91,20 +91,23 @@
 	line-height: 1.2;
 }
 
-.project__technologies {
+.project__technologies,
+.design__item-tags {
 	font-weight: 600;
 	font-size: 2rem;
 	opacity: .3;
 	overflow: hidden
 }
 
-.project__technologies>div {
+.project__technologies>div,
+.design__item-tags>div {
 	display: flex;
 	gap: 1.2vw;
 	will-change: transform;
 }
 
-.project__technologies span.separator {
+.project__technologies span.separator,
+.design__item-tags span.separator {
 	@apply text-secondary leading-loose;
 }
 
@@ -185,11 +188,12 @@
 .design__item-tags {
 	grid-area: design-tags;
 	justify-self: end;
-	font-size: 1.5rem;
-	display: grid;
-	grid-auto-flow: column;
-	grid-gap: 1rem;
-	cursor: pointer;
+	font-size: 1.2rem;
+	margin-block-start: .625rem;
+
+	&>div {
+		gap: .5vw;
+	}
 }
 
 .design__text {

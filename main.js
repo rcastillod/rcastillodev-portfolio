@@ -1,7 +1,8 @@
+// Preloader
+import startPreLoader from './assets/js/preloader';
 import { preloadImages, isInViewport } from '/assets/js/extras';
 import { Menu } from '/assets/js/menu';
 import getProjects from '/assets/js/getProjects'
-import getDesigns from '/assets/js/getDesigns'
 import { Project } from '/assets/js/projects';
 import Lenis from '@studio-freight/lenis'
 import { gsap } from 'gsap';
@@ -13,47 +14,12 @@ import logoDarkUrl from './logorcDevDark.svg'
 import logoLightUrl from './logorcDevLight.svg'
 document.getElementById('logo').src = logoDarkUrl
 
-// Spline
-import { Application } from '@splinetool/runtime';
-
-const canvas = document.getElementById('cubesFig');
-const app = new Application(canvas);
-app
-	.load('https://prod.spline.design/Lc21rEwxZf6KYSSw/scene.splinecode')
-	.then(() => {
-		const body = app.findObjectByName("body")
-
-		gsap.set(body.scale, { x: 2, y: 2, z: 2 })
-		gsap.set(body.position, { x: -1000, y: -500 })
-		gsap.set(body.rotation, { x: -0.2, y: 1.9 })
-
-		const bodyTimeline01 = gsap.timeline({
-			scrollTrigger: {
-				trigger: '.projects',
-				start: 'top center',
-				end: 'bottom bottom',
-				scrub: true,
-			}
-		})
-			.to(body.position, { x: -1050, y: -1000 }, 0)
-			.to(body.scale, { x: 3, y: 3, z: 3 }, 0)
-			.to(body.rotation, { x: -Math.PI / 14, z: Math.PI / 46 }, 0)
-
-		// Add another trigger
-		const bodyTimeline02 = gsap.timeline({
-			scrollTrigger: {
-				trigger: '.designs',
-				start: 'top bottom',
-				end: 'bottom bottom',
-				scrub: true,
-			},
-		})
-			.to(body.position, { x: 0, y: -500 }, 0)
-			.to(body.scale, { x: 1.2, y: 1.2, z: 1.2 }, 0)
-			.to(body.rotation, { x: -0.1, y: 0, z: 0 }, 0)
-
-	})
-
+// Call Preloader
+startPreLoader()
+gsap.to('.counter', 0.25, {
+	delay: 3.5,
+	opacity: 0
+})
 
 /* -------------------------------------------------------------------------- */
 /*                                Custom cursor                               */
@@ -318,78 +284,4 @@ preloadImages('.project__image-inner').then(() => {
 		headingAnimateOnScroll();
 	}, 600)
 });
-
-
-/* -------------------------------------------------------------------------- */
-/*                                  Preloader                                 */
-/* -------------------------------------------------------------------------- */
-
-const startPreLoader = () => {
-
-	// Add body class
-	document.body.classList.add('loader__visible')
-	// Pause the lenis scroll when the preview is open
-	lenis.stop()
-
-	const loader = document.querySelector('.loader__wrapper')
-	const preCounter = document.querySelector('.counter')
-	let currentValue = 0
-
-	const updateCounter = () => {
-		if (currentValue === 100) return
-
-		currentValue += Math.floor(Math.random() * 10) + 1
-
-		if (currentValue > 100) {
-			currentValue = 100
-		}
-
-		if (currentValue === 100) {
-
-			gsap.to(loader, {
-				duration: 1,
-				delay: 1,
-				opacity: 0,
-				onComplete: function () {
-					// Hide the preloader overlay when the animation is complete
-					loader.style.display = "none";
-				},
-			});
-			gsap.to('.content__caption-background-title > div', {
-				y: 0,
-				delay: .3,
-				ease: "power4.out",
-			})
-			gsap.to('.content__title > div', {
-				duration: 1,
-				ease: "power4.out",
-				y: 0,
-				delay: 1.6,
-				stagger: .09
-			})
-
-			// Remove body class
-			document.body.classList.remove('loader__visible')
-			// Enable the scroll when preview is closed
-			lenis.start()
-		}
-
-		preCounter.textContent = currentValue
-
-
-		let delay = Math.floor(Math.random() * 200) + 50
-		setTimeout(updateCounter, delay)
-
-	}
-
-	updateCounter()
-
-}
-
-startPreLoader()
-
-gsap.to('.counter', 0.25, {
-	delay: 3.5,
-	opacity: 0
-})
 

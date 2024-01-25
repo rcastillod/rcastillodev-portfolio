@@ -24,7 +24,7 @@ const generateDesignsTemplate = (data) => {
 			</div>
 			<figcaption class="design__item-caption">
 				<h2 class="design__item-title">${data.attributes.titulo}</h2>
-				<p class="design__item-tags">${getTechnologies(data.attributes.technologies)}</p>
+				<div class="design__item-tags"><div>${getTechnologies(data.attributes.technologies)}</div></div>
 			</figcaption>
 		</figure>
   `

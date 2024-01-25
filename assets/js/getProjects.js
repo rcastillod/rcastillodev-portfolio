@@ -1,6 +1,10 @@
+// Gsap
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
+// Figure Animation
+import figureAnim from './figureAnim';
+import getDesigns from '/assets/js/getDesigns'
 
 // Api URL
 // Check if the environment is production
@@ -11,8 +15,6 @@ const endpointUrl = isProduction
 	? 'https://strapi-portfolio-l13w.onrender.com/api/proyectos?filters[categorias][nombre][$eq]=Web%20development&populate=*'
 	: 'http://localhost:1337/api/proyectos?filters[categorias][nombre][$eq]=Web%20development&populate=*';
 
-
-// Now, use `endpointUrl` in your API requests
 
 // Root node to inject projects
 const rootNode = document.querySelector('.projects-wrapper')
@@ -59,6 +61,12 @@ const getProjects = async (url) => {
 		const data = await response.json()
 
 		renderProjectsData(rootNode, data)
+
+		// Call the animation when projects are already loaded
+		figureAnim()
+
+		// Call the designs projects when dev projects are already loaded
+		getDesigns
 
 		const projects = document.querySelectorAll('.project')
 
