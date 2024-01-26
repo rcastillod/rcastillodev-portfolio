@@ -27,7 +27,7 @@ const generateProjectsTemplate = (data) => {
 				<h2 class="project__caption-title oh"><span class="project__inner">${data.attributes.titulo}</span></h2>
 				<p class="project__caption-description">${data.attributes.descripcion}</p>
 			</figcaption>
-			<a href="${data.attributes.Url}" class="project__link cursor-scale" target="_blank">
+			<a href="${data.attributes.url}" class="project__link cursor-scale" target="_blank">
 				<div class="project__image-wrap">
 					<div class="project__image"><div class="project__image-inner" style="background-image:url(${data.attributes.imagen.data.attributes.url})"></div></div>
 					<div class="project__technologies"><div>${getTechnologies(data.attributes.technologies)}</div></div>
@@ -72,13 +72,14 @@ const getProjects = async (url) => {
 
 		projects.forEach((project) => {
 
-			let cursor = document.querySelector('.cursor')
-
 
 			const link = project.querySelector('.project__link')
 			const imageInner = project.querySelector('.project__image-inner')
 			const title = project.querySelector('.project__caption-title')
 			const titleInner = project.querySelector('.project__inner')
+
+			// Cursor animation
+			let cursor = document.querySelector('.cursor')
 
 			link.addEventListener('mouseleave', () => {
 				cursor.classList.remove('grow', 'grow-small', 'grow__project');
@@ -102,7 +103,7 @@ const getProjects = async (url) => {
 					trigger: project,
 					start: 'top bottom',
 					end: 'bottom top',
-					scrub: true
+					scrub: true,
 				}
 			})
 				.addLabel('start', 0)

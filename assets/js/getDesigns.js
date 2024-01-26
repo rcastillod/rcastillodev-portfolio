@@ -19,9 +19,9 @@ const rootNode = document.querySelector('.designs-wrapper')
 const generateDesignsTemplate = (data) => {
 	return `
 		<figure class="design__item">
-			<div class="design__item-img">
+			<a href="${data.attributes.url}" class="design__item-img">
 				<div class="design__item-imginner" style="background-image: url(${data.attributes.imagen.data.attributes.url})"></div>
-			</div>
+			</a>
 			<figcaption class="design__item-caption">
 				<h2 class="design__item-title">${data.attributes.titulo}</h2>
 				<div class="design__item-tags"><div>${getTechnologies(data.attributes.technologies)}</div></div>
@@ -56,10 +56,34 @@ const getDesigns = async (url) => {
 		renderDesignsData(rootNode, data)
 
 		const container = document.querySelector('.designs-wrapper')
+		const links = document.querySelectorAll('.design__item-img')
+		const imageInner = gsap.utils.toArray('.design__item-imginner')
 		let containerWidth = container.scrollWidth - document.documentElement.clientWidth;
 
 		let skewSetter = gsap.quickTo(".design__item-img", "skewY")
 		let clamp = gsap.utils.clamp(-5, 5);
+
+		// Cursor animation
+		let cursor = document.querySelector('.cursor')
+
+		links.forEach((link) => {
+			link.addEventListener('mouseleave', () => {
+				cursor.classList.remove('grow', 'grow-small', 'grow__project');
+			});
+			link.addEventListener('mouseenter', () => {
+				cursor.classList.add('grow', 'grow__project');
+				if (link.classList.contains('small')) {
+					cursor.classList.remove('grow');
+					cursor.classList.add('grow-small');
+				}
+			});
+		})
+
+		gsap.set(imageInner, {
+			transformOrigin: '50% 0%',
+			scaleY: 1.2,
+			scaleX: 1.2,
+		});
 
 		gsap.to(container, {
 			x: () => -containerWidth,
@@ -82,6 +106,18 @@ const getDesigns = async (url) => {
 				scrub: 0.5,
 			}
 		})
+		imageInner.forEach(image => {
+			gsap.to(image, {
+				ease: 'none',
+				scaleY: 1,
+				scaleX: 1,
+				scrollTrigger: {
+					trigger: container,
+					start: 'top top',
+					scrub: 0.5,
+				}
+			})
+		});
 
 	} catch (error) {
 		console.log('Error', error.message)

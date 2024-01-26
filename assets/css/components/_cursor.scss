@@ -26,6 +26,7 @@
 	}
 
 	.grow__project {
+		@apply bg-white/60;
 		backdrop-filter: blur(5px);
 		mix-blend-mode: normal;
 
@@ -33,7 +34,7 @@
 		place-items: center;
 
 		&::after {
-			@apply text-secondary;
+			@apply text-secondary-shade;
 			content: 'Ir al proyecto';
 			font-size: 0.25rem;
 			z-index: 9999;
