@@ -23,7 +23,7 @@ const figureAnim = () => {
 					trigger: '.projects',
 					start: 'top center',
 					end: 'bottom bottom',
-					scrub: true,
+					scrub: 1.5,
 				}
 			})
 				.to(body.position, { x: -1050, y: -1000 }, 0)
@@ -37,7 +37,7 @@ const figureAnim = () => {
 					trigger: '.designs',
 					start: 'top bottom',
 					end: 'top center',
-					scrub: true,
+					scrub: 1.5,
 				},
 			})
 				.to(body.position, { x: -1000, y: -900 }, 0)
