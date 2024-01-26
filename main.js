@@ -52,7 +52,7 @@ cursorScale.forEach(link => {
 		cursor.classList.remove('grow');
 		cursor.classList.remove('grow-small');
 	});
-	link.addEventListener('mousemove', () => {
+	link.addEventListener('mouseenter', () => {
 		cursor.classList.add('grow');
 		if (link.classList.contains('small')) {
 			cursor.classList.remove('grow');

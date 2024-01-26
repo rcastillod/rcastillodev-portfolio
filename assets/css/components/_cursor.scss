@@ -25,6 +25,21 @@
 		border: none;
 	}
 
+	.grow__project {
+		backdrop-filter: blur(5px);
+		mix-blend-mode: normal;
+
+		display: grid;
+		place-items: center;
+
+		&::after {
+			@apply text-secondary;
+			content: 'Ir al proyecto';
+			font-size: 0.25rem;
+			z-index: 9999;
+		}
+	}
+
 	.grow-small {
 		transform: scale(2.5);
 	}

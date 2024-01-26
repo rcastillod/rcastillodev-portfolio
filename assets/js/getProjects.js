@@ -72,9 +72,24 @@ const getProjects = async (url) => {
 
 		projects.forEach((project) => {
 
+			let cursor = document.querySelector('.cursor')
+
+
+			const link = project.querySelector('.project__link')
 			const imageInner = project.querySelector('.project__image-inner')
 			const title = project.querySelector('.project__caption-title')
 			const titleInner = project.querySelector('.project__inner')
+
+			link.addEventListener('mouseleave', () => {
+				cursor.classList.remove('grow', 'grow-small', 'grow__project');
+			});
+			link.addEventListener('mouseenter', () => {
+				cursor.classList.add('grow', 'grow__project');
+				if (link.classList.contains('small')) {
+					cursor.classList.remove('grow');
+					cursor.classList.add('grow-small');
+				}
+			});
 
 			gsap.set(imageInner, {
 				transformOrigin: '50% 0%',
